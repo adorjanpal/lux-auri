@@ -3,13 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
+
     <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Regisztráció</title>
   </head>
   <body>
@@ -19,8 +15,14 @@
           <img src="assets/LUXAURI.jpg" alt="LuxAuri" />
         </div>
 
-        <form class="register-form" action="#" method="post">
-          <h2>Regisztráció</h2>
+        <!-- Regisztrációs űrlap (ez jelenik meg alapból) -->
+        <form
+          id="regisztracio-form"
+          class="register-form"
+          action="#"
+          method="post"
+        >
+          <h2>REGISZTRÁCIÓ</h2>
           <div class="form-item">
             <label class="form-label" for="email">email</label>
             <input
@@ -95,18 +97,80 @@
           </div>
 
           <div class="nav-container">
-            <input
-              class="btn register-btn"
-              type="submit"
-              value="Regisztráció"
-            />
+            <a href="index.html">
+              <button type="button" class="btn register-btn">
+                Regisztráció
+              </button>
+            </a>
             <span class="bejelentkezes-nav-container"
               ><p>Van már fiókod?</p>
-              <p class="bejelentkezes-link">Bejelentkezés</p>
+              <p id="bejelentkezes-kapcsolo" class="bejelentkezes-link">
+                Bejelentkezés
+              </p>
+            </span>
+          </div>
+        </form>
+
+        <!-- Bejelentkezési Űrlap -->
+        <form
+          class="register-form hidden"
+          action="#"
+          method="post"
+          id="bejelentkezes-form"
+        >
+          <h2>BEJELENTKEZÉS</h2>
+          <div class="form-item">
+            <label class="form-label" for="email">email</label>
+            <input
+              class="form-input"
+              type="text"
+              id="email2"
+              name="email"
+              required
+              placeholder="email..."
+            />
+          </div>
+
+          <div class="form-item">
+            <label class="form-label" for="jelszo">jelszó</label>
+            <input
+              class="form-input"
+              type="password"
+              id="jelszo2"
+              name="jelszo"
+              required
+              placeholder="jelszó..."
+            />
+          </div>
+
+          <div class="nav-container">
+            <a href="index.html">
+              <button type="button" class="btn register-btn">
+                Bejelentkezés
+              </button>
+            </a>
+            <span class="bejelentkezes-nav-container"
+              ><p id="van">Nincs fiókod?</p>
+              <p id="regisztracio-kapcsolo" class="bejelentkezes-link">
+                Regisztráció
+              </p>
             </span>
           </div>
         </form>
       </div>
     </main>
+    <script>
+      //Váltás a bejelentkezési űrlapra
+      $("#bejelentkezes-kapcsolo").click(function (e) {
+        $("#regisztracio-form").addClass("hidden");
+        $("#bejelentkezes-form").removeClass("hidden");
+      });
+
+      //Váltás a regisztrációs űrlapra
+      $("#regisztracio-kapcsolo").click(function (e) {
+        $("#regisztracio-form").removeClass("hidden");
+        $("#bejelentkezes-form").addClass("hidden");
+      });
+    </script>
   </body>
 </html>

@@ -1,5 +1,4 @@
 body {
-  font-family: "Merriweather", serif;
   background-color: #ffffff;
   margin: 0;
   padding: 0;
@@ -71,14 +70,9 @@ header {
   padding: 2rem;
   border-radius: 8px;
   align-items: center;
-  font-size: 12px;
-  gap: 1.5rem;
+  font-size: 15px;
+  gap: 1.25rem;
   width: 100%;
-}
-
-.register-form input::placeholder {
-  font-family: "Merriweather", serif;
-  font-size: 12px;
 }
 
 .btn {
@@ -92,48 +86,60 @@ header {
 }
 
 .register-btn {
-  transition: all 0.7s;
+  transition: all 0.4s;
 }
 
 .register-btn:hover {
   background-color: white;
   color: black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  /* border-right: 1px solid black;
+  border-bottom: 1px solid black; */
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .register-form .form-item {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
   position: relative;
   display: flex;
   width: 100%;
 }
 
+.register-form input::placeholder {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+}
+
 .register-form .form-label {
+  z-index: -1;
   position: absolute;
   top: 0.25rem;
   left: 0.25rem;
+  font-weight: 600;
 }
 
 .register-form .form-input {
   padding: 0.25rem;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid gray;
   width: 100%;
 }
 
 .register-form .form-input:focus {
   outline: none;
-  border-bottom: 2px solid grey;
+  border-bottom: 3px solid black;
 }
 
 .register-form .form-input:valid {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
 }
 
 .nav-container {
   width: 100%;
-  font-size: 9px;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
 }
 
 .bejelentkezes-nav-container {
@@ -171,4 +177,8 @@ header {
   width: 100%;
   display: flex;
   justify-content: space-around;
+}
+
+.hidden {
+  display: none;
 }

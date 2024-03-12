@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css" />
     <title>Home</title>
   </head>
@@ -24,19 +24,134 @@
     </header>
     <main>
       <div class="index-container">
-        <a href="karkotok.html" class="home-img-container">
+        <!-- Karkötők -->
+        <a id="karkotok-link" href="karkotok.html" class="home-img-container">
           <img src="assets/bracelet.webp" alt="Karkötők" />
-          <p href="karkotok.html">Karkötők</p>
+          <div class="text-container">
+            <h3 id="karkotok-title" href="karkotok.html">Karkötők</h3>
+            <p id="karkotok-text" class="index-text hidden">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. A,
+              nesciunt.
+            </p>
+          </div>
         </a>
-        <a href="nyaklancok.html" class="home-img-container">
+        <!-- Nyakláncok -->
+        <a
+          id="nyaklancok-link"
+          href="nyaklancok.html"
+          class="home-img-container"
+        >
           <img src="assets/necklace.jpg" alt="Nyakláncok" />
-          <p>Nyakláncok</p>
+          <div class="text-container">
+            <h3>Nyakláncok</h3>
+            <p id="nyaklancok-text" class="index-text hidden">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. A,
+              nesciunt.
+            </p>
+          </div>
         </a>
-        <a href="gyuruk.html" class="home-img-container">
+        <!-- Gyűrűk -->
+        <a id="gyuruk-link" href="gyuruk.html" class="home-img-container">
           <img src="assets/rings.jpg" alt="Gyűrűk" />
-          <p>Gyűrűk</p>
+          <div class="text-container">
+            <h3>Gyűrűk</h3>
+            <p id="gyuruk-text" class="index-text hidden">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. A,
+              nesciunt.
+            </p>
+          </div>
         </a>
       </div>
     </main>
+    <script>
+      //Szöveg megjelenítése, ha ráviszi a felhasználó a kurzort (karkötők)
+      $("#karkotok-link").mouseover(function (e) {
+        let opacity = 0.1;
+        let element = $("#karkotok-text");
+        element.removeClass("hidden");
+        element.css("opacity", opacity);
+
+        let timer = setInterval(function () {
+          if (opacity >= 1) {
+            clearInterval(timer);
+          }
+          element.css("opacity", opacity);
+
+          opacity += opacity * 0.1;
+        }, 10);
+      });
+      //Szöveg eltűntetése, ha leviszi a képről a felhasználó a kurzort (karkötők)
+
+      $("#karkotok-link").mouseleave(function (e) {
+        var opacity = 1;
+        let element = $("#karkotok-text");
+        var timer = setInterval(function () {
+          if (opacity <= 0.1) {
+            element.addClass("hidden");
+            clearInterval(timer);
+          }
+          element.css("opacity", opacity);
+          opacity -= opacity * 0.1;
+        }, 10);
+      });
+      //Szöveg megjelenítése, ha ráviszi a felhasználó a kurzort (nyakláncok)
+      $("#nyaklancok-link").mouseover(function (e) {
+        let opacity = 0.1;
+        let element = $("#nyaklancok-text");
+        element.removeClass("hidden");
+        element.css("opacity", opacity);
+
+        let timer = setInterval(function () {
+          if (opacity >= 1) {
+            clearInterval(timer);
+          }
+          element.css("opacity", opacity);
+
+          opacity += opacity * 0.1;
+        }, 10);
+      });
+      //Szöveg eltűntetése, ha leviszi a képről a felhasználó a kurzort (nyakláncok)
+      $("#nyaklancok-link").mouseleave(function (e) {
+        var opacity = 1;
+        let element = $("#nyaklancok-text");
+        var timer = setInterval(function () {
+          if (opacity <= 0.1) {
+            element.addClass("hidden");
+            clearInterval(timer);
+          }
+          element.css("opacity", opacity);
+          opacity -= opacity * 0.1;
+        }, 10);
+      });
+      //Szöveg megjelenítése, ha ráviszi a felhasználó a kurzort (gyűrűk)
+      $("#gyuruk-link").mouseover(function (e) {
+        let opacity = 0.1;
+        let element = $("#gyuruk-text");
+        element.removeClass("hidden");
+        element.css("opacity", opacity);
+
+        let timer = setInterval(function () {
+          if (opacity >= 1) {
+            clearInterval(timer);
+          }
+          element.css("opacity", opacity);
+
+          opacity += opacity * 0.1;
+        }, 10);
+      });
+      //Szöveg eltűntetése, ha leviszi a képről a felhasználó a kurzort (gyűrűk)
+      $("#gyuruk-link").mouseleave(function (e) {
+        var opacity = 1;
+        let element = $("#gyuruk-text");
+        var timer = setInterval(function () {
+          if (opacity <= 0.1) {
+            element.addClass("hidden");
+            clearInterval(timer);
+          }
+          element.css("opacity", opacity);
+          opacity -= opacity * 0.1;
+        }, 10);
+      });
+    </script>
   </body>
 </html>

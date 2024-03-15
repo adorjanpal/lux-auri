@@ -36,12 +36,14 @@ header {
 }
 
 .navbar {
+  z-index: 99;
   position: fixed;
   top: 0;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   justify-content: center;
+  background-color: white;
 }
 
 .nav-icon-container {
@@ -99,7 +101,7 @@ header {
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
-.register-form .form-item {
+.form-item {
   font-family: "Times New Roman", Times, serif;
   font-size: 14px;
   position: relative;
@@ -132,7 +134,7 @@ header {
   border-bottom: 3px solid black;
 }
 
-.register-form .form-input:valid {
+.form-input:valid {
   margin-top: 1.25rem;
 }
 
@@ -326,4 +328,117 @@ header {
 .osszesites-span {
   display: flex;
   justify-content: space-between;
+}
+
+/* Profil */
+
+.profil-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 5rem;
+  width: 25%;
+  margin-top: 68px;
+  height: 84vh;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.profil-img {
+  width: 5rem;
+  object-fit: contain;
+}
+
+.profile-header {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid gray;
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  span:first-child {
+    font-size: 25px;
+    font-weight: 600;
+  }
+
+  span:last-child {
+    font-size: small;
+    color: gray;
+  }
+
+  img:last-child {
+    position: absolute;
+    right: 0;
+  }
+
+  select {
+    outline: none;
+  }
+
+  &:active {
+    outline: none;
+  }
+
+  &::after {
+    outline: none;
+    border: none;
+  }
+}
+
+.profil-form-item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-left: 0.25rem;
+    font-weight: 600;
+  }
+
+  select {
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 0.25rem;
+  }
+
+  option {
+    text-align: center;
+  }
+}
+.date-input:valid {
+  margin-top: 0;
+}
+
+.profil-form {
+  width: 90%;
+  gap: 2rem;
+}
+
+.profil-adatok-container {
+  position: relative;
+}
+
+.adatok-menu-span {
+  position: absolute;
+  right: -3rem;
+  top: -1rem;
+}
+
+.link-btn {
+  border: none;
+  font-size: 11px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.active {
+  font-weight: 600;
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="index.css" />
     <title>Profil</title>
   </head>
 
@@ -22,8 +22,92 @@
         </span>
       </nav>
     </header>
-    <main>
-      <h1>Profil</h1>
+    <main class="profil-main">
+      <div class="profil-container">
+        <div class="profile-header">
+          <img class="profil-img" src="/assets/default.jpg" alt="Profilkép" />
+          <div>
+            <span>Kis István</span>
+            <span>kisspista6000</span>
+          </div>
+          <img src="/assets/box-arrow-right.svg" alt="Kijelentkezés Gomb" />
+        </div>
+        <div class="profil-adatok-container">
+          <span class="adatok-menu-span">
+            <button class="link-btn active">Profil adatok</button>
+            <span class="active">|</span>
+            <button class="link-btn">Korábbi rendelések</button>
+          </span>
+          <form
+            id="profil-form"
+            class="register-form profil-form"
+            action="#"
+            method="post"
+          >
+            <h2>Profil adatok</h2>
+            <div class="form-item">
+              <label class="form-label" for="lakcim">Lakcím</label>
+              <input
+                class="form-input"
+                type="text"
+                id="lakcim"
+                name="lakcim"
+                value="Budapest, Kossuth utca 10."
+                placeholder="Lakcím..."
+                required
+              />
+            </div>
+            <div class="form-item">
+              <label class="form-label" for="telefonszam">Telefonszám</label>
+              <input
+                class="form-input"
+                type="tel"
+                id="telefonszam"
+                name="telefonszam"
+                required
+                value="06 70 2386413"
+              />
+            </div>
+
+            <span class="nev-container">
+              <div class="profil-form-item">
+                <label class="date-label" for="szulDatum"
+                  >Születési dátum</label
+                >
+                <input
+                  class="form-input date-input"
+                  type="date"
+                  id="szulDatum"
+                  name="szulDatum"
+                  required
+                  value="1985. március 15."
+                />
+              </div>
+              <div class="profil-form-item">
+                <label class="select-label" for="neme">Neme</label>
+                <select name="neme" id="neme">
+                  <option selected>- Nincs megadva -</option>
+                  <option value="0">Férfi</option>
+                  <option value="1">Nő</option>
+                </select>
+              </div>
+            </span>
+
+            <div class="form-item">
+              <label class="form-label" for="email">Email</label>
+              <input
+                class="form-input"
+                type="email"
+                id="email"
+                name="email"
+                required
+                value="kisspista6000@yandex.ru"
+              />
+            </div>
+            <button class="btn">Adatok módosítása</button>
+          </form>
+        </div>
+      </div>
     </main>
   </body>
 </html>

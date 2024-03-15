@@ -24,6 +24,7 @@ h2 {
 }
 
 main {
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -210,10 +211,6 @@ header {
   font-size: 18px;
 }
 
-.hidden {
-  display: none;
-}
-
 .gyuruk-heading {
   width: 100%;
 }
@@ -276,9 +273,8 @@ header {
 
 .tetel-modositasa-container {
   display: flex;
-
+  flex-direction: column;
   gap: 0.5rem;
-  margin-right: 2.5rem;
 }
 
 .tetel-modositasa-container p:last-child {
@@ -330,16 +326,30 @@ header {
   justify-content: space-between;
 }
 
+.eltavolitas-btn {
+  background-color: red;
+}
+
+.modositas-btn {
+  background-color: gray;
+}
+
+.eltavolitas-btn:hover {
+  background-color: red;
+  color: white;
+  opacity: 0.8;
+}
+
 /* Profil */
 
 .profil-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 2rem;
   padding: 2rem 5rem;
-  width: 25%;
+  width: 40%;
   margin-top: 68px;
   height: 84vh;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -428,8 +438,8 @@ header {
 
 .adatok-menu-span {
   position: absolute;
-  right: -3rem;
-  top: -1rem;
+  right: 32rem;
+  top: 12rem;
 }
 
 .link-btn {
@@ -441,4 +451,38 @@ header {
 
 .active {
   font-weight: 600;
+}
+
+/* Korábbi rendelések */
+.korabbi-rendelesek-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 0;
+  width: 100%;
+}
+
+.korabbi-rendeles-row {
+  display: flex;
+  width: 100%;
+  gap: 3rem;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  margin-top: 2rem;
+  border-bottom: 1px solid gray;
+
+  align-items: center;
+
+  div {
+    align-self: center;
+  }
+}
+
+.elso-oszlop {
+  display: flex;
+}
+
+.hidden {
+  display: none;
 }

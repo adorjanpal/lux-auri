@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Profil</title>
   </head>
 
@@ -24,6 +25,16 @@
     </header>
     <main class="profil-main">
       <div class="profil-container">
+        <span class="adatok-menu-span">
+          <button id="profil-switch" class="link-btn active">
+            Profil adatok
+          </button>
+          <span class="active">|</span>
+          <button id="korabbi-switch" class="link-btn">
+            Korábbi rendelések
+          </button>
+        </span>
+        <!-- Profil fejléc -->
         <div class="profile-header">
           <img class="profil-img" src="/assets/default.jpg" alt="Profilkép" />
           <div>
@@ -32,12 +43,59 @@
           </div>
           <img src="/assets/box-arrow-right.svg" alt="Kijelentkezés Gomb" />
         </div>
-        <div class="profil-adatok-container">
-          <span class="adatok-menu-span">
-            <button class="link-btn active">Profil adatok</button>
-            <span class="active">|</span>
-            <button class="link-btn">Korábbi rendelések</button>
-          </span>
+
+        <!-- Korábbi rendelések -->
+        <div
+          id="korabbi-rendelesek"
+          class="korabbi-rendelesek-container hidden"
+        >
+          <div class="korabbi-rendeles-row">
+            <div class="elso-oszlop">
+              <div class="img-container">
+                <img src="assets/rings.jpg" alt="gyuru" />
+              </div>
+              <div class="gyuru-details">
+                <a href="#" class="kosar-item-title">Fasza gyűrű</a>
+                <span
+                  ><p class="kosar-item-detail">Méret: 40</p>
+                  <p class="kosar-item-detail">Mennyiség: 1</p></span
+                >
+              </div>
+            </div>
+            <div>
+              <p>50 000 FT</p>
+            </div>
+            <div class="tetel-modositasa-container">
+              <div class="tetel-modositasa-container">
+                <button class="btn">Megrendelés mégegyszer</button>
+              </div>
+            </div>
+          </div>
+          <div class="korabbi-rendeles-row">
+            <div class="elso-oszlop">
+              <div class="img-container">
+                <img src="assets/rings.jpg" alt="gyuru" />
+              </div>
+              <div class="gyuru-details">
+                <a href="#" class="kosar-item-title">Fasza gyűrű</a>
+                <span
+                  ><p class="kosar-item-detail">Méret: 40</p>
+                  <p class="kosar-item-detail">Mennyiség: 1</p></span
+                >
+              </div>
+            </div>
+            <div>
+              <p>50 000 FT</p>
+            </div>
+            <div class="tetel-modositasa-container">
+              <div class="tetel-modositasa-container">
+                <button class="btn">Megrendelés mégegyszer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Felhasználó adatai -->
+        <div id="profil-adatok-container" class="profil-adatok-container">
           <form
             id="profil-form"
             class="register-form profil-form"
@@ -109,5 +167,22 @@
         </div>
       </div>
     </main>
+    <script>
+      $("#profil-switch").click(function (e) {
+        $("#korabbi-rendelesek").addClass("hidden");
+        $("#profil-adatok-container").removeClass("hidden");
+        $("#korabbi-switch").removeClass("active");
+        $("#profil-switch").addClass("active");
+        console.log("valtas profilra");
+      });
+
+      $("#korabbi-switch").click(function (e) {
+        console.log("valtas korabbira");
+        $("#korabbi-rendelesek").removeClass("hidden");
+        $("#profil-adatok-container").addClass("hidden");
+        $("#korabbi-switch").addClass("active");
+        $("#profil-switch").removeClass("active");
+      });
+    </script>
   </body>
 </html>

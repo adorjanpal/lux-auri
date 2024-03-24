@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,7 +25,7 @@
     </header>
     <main class="profil-main">
       <div class="profil-container">
-        <span class="adatok-menu-span">
+        <div class="adatok-menu-span">
           <button id="profil-switch" class="link-btn active">
             Profil adatok
           </button>
@@ -33,7 +33,7 @@
           <button id="korabbi-switch" class="link-btn">
             Korábbi rendelések
           </button>
-        </span>
+        </div>
         <!-- Profil fejléc -->
         <div class="profile-header">
           <img class="profil-img" src="/assets/default.jpg" alt="Profilkép" />
@@ -56,10 +56,10 @@
               </a>
               <div class="gyuru-details">
                 <a href="#" class="kosar-item-title">Faja gyűrű</a>
-                <span
-                  ><p class="kosar-item-detail">Méret: 40</p>
-                  <p class="kosar-item-detail">Mennyiség: 1</p></span
-                >
+                <div>
+                  <p class="kosar-item-detail">Méret: 40</p>
+                  <p class="kosar-item-detail">Mennyiség: 1</p>
+                </div>
               </div>
             </div>
             <div>
@@ -78,10 +78,10 @@
               </div>
               <div class="gyuru-details">
                 <a href="#" class="kosar-item-title">Faja gyűrű</a>
-                <span
-                  ><p class="kosar-item-detail">Méret: 40</p>
-                  <p class="kosar-item-detail">Mennyiség: 1</p></span
-                >
+                <div>
+                  <p class="kosar-item-detail">Méret: 40</p>
+                  <p class="kosar-item-detail">Mennyiség: 1</p>
+                </div>
               </div>
             </div>
             <div>
@@ -127,7 +127,7 @@
               />
             </div>
 
-            <span class="nev-container">
+            <div class="nev-container">
               <div class="profil-form-item">
                 <label class="date-label" for="szulDatum"
                   >Születési dátum</label
@@ -138,7 +138,7 @@
                   id="szulDatum"
                   name="szulDatum"
                   required
-                  value="1985. március 15."
+                  value="1985-03-24"
                 />
               </div>
               <div class="profil-form-item">
@@ -149,7 +149,7 @@
                   <option value="1">Nő</option>
                 </select>
               </div>
-            </span>
+            </div>
 
             <div class="form-item">
               <label class="form-label" for="email">Email</label>

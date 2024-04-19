@@ -1,0 +1,276 @@
+<?php
+  include_once("./fuggvenyek/dbfuggvenyek.php");
+  $termekek = termekeket_leker("nyaklánc");
+  print_r($termekek)
+?>
+
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Nyakláncok</title>
+  </head>
+
+  <body >
+ 
+    <header>
+      <nav class="navbar">
+        <a href="index.html"><h1>LUXAURI</h1></a>
+        <span class="nav-icon-container"
+          ><a href="kosar.html"
+            ><img src="assets/bag.svg" alt="Bevasarlo Kosar"
+          /></a>
+          <a href="kedvencek.html"
+            ><img src="assets/heart.svg" alt="Kedvencek"
+          /></a>
+          <a href="profil.html"><img src="assets/person.svg" alt="Profil" /></a>
+        </span>
+      </nav>
+    </header>
+    <main class="relative">
+    <div class="hidden modal-container" id="termekek-hozzaadasa-modal">
+          <img src="assets/x-lg.svg" class="x-btn pointer" id="close" alt="Close modal">
+          <?php include 'termekek_hozzaadasa.php'; ?>
+    </div>
+      <div class="gyuruk-heading">
+        <div class="row gap-1">
+          <h2>Nyakláncok</h2>
+          <button class="btn hozzaadas" id="termek-hozzaadas">
+            Termék hozzáadása
+          </button>
+         
+         <div>
+        
+         </div>
+        </div>
+        <p class="gyuruk-text">
+          Fedezze fel lenyűgöző nyakláncainkat, melyek kifinomultságot és
+          stílust kölcsönöznek viselőjüknek. Válasszon a vintage bájú, modern
+          minimalista vagy extravagáns darabok közül. Kiváló minőségű anyagokból
+          készültek, és minden alkalmazkodnak. Legyen az öltözékének
+          elengedhetetlen része! Böngésszen most és találja meg tökéletes
+          nyakláncát!
+        </p>
+        <div class="grey-line"></div>
+        <div class="filters-order">Filters | Order by</div>
+        
+        <div class="gyuruk-container">
+        <?php
+           if ($termekek) {
+           for ($i=0; $i < count($termekek); $i++) { 
+            
+           
+            
+              echo '<div class="col">'.
+                '<img src=/images/'.$termekek["kep"].'/>'.
+                '<div class="col gap-5">'.
+                  '<span>'.$termekek["nev"].'</span>'.
+                  '<span>'.$termekek["ar"].'</span>'.
+                '</div>'.
+              '</div>';
+
+            }
+           } else {
+            echo '<span>Sajnos nem található termék az adott kategóriában :(</span>';
+           }
+        ?>
+       
+          <a href="termek.html">
+            <div class="ring-item">
+              <img
+                src="assets/neklace1.jpg"
+                title="Arany nyaklánc"
+                class="ring-image"
+              />
+              <div class="ring-details">
+                Arany nyaklánc | 50 000Ft
+                <img
+                  src="assets/bag.svg"
+                  title="Bevásárló Kosár"
+                  class="bag-icon"
+                />
+                <img
+                  src="assets/heart.svg"
+                  title="Kedvencek"
+                  class="heart-icon"
+                />
+              </div>
+            </div>
+          </a>
+
+          <a href="termek.html">
+            <div class="ring-item">
+              <img
+                src="assets/neklace2.jpg"
+                title="Arany nyaklánc"
+                class="ring-image"
+              />
+              <div class="ring-details">
+                arany nyaklánc | 50 000Ft
+                <img
+                  src="assets/bag.svg"
+                  title="Bevásárló Kosár"
+                  class="bag-icon"
+                />
+                <img
+                  src="assets/heart.svg"
+                  title="Kedvencek"
+                  class="heart-icon"
+                />
+              </div>
+            </div>
+          </a>
+
+          <a href="termek.html">
+            <div class="ring-item">
+              <img
+                src="assets/neklace3.jpg"
+                title="Arany nyaklánc"
+                class="ring-image"
+              />
+              <div class="ring-details">
+                jo nyaklánc | 50 000Ft
+                <img
+                  src="assets/bag.svg"
+                  title="Bevásárló Kosár"
+                  class="bag-icon"
+                />
+                <img
+                  src="assets/heart.svg"
+                  title="Kedvencek"
+                  class="heart-icon"
+                />
+              </div>
+            </div>
+          </a>
+
+          <div class="ring-item">
+            <img
+              src="assets/neklace4.jpg"
+              title="Arany nyaklánc"
+              class="ring-image"
+            />
+            <div class="ring-details">
+              szep nyaklánc | 50 000Ft
+              <img
+                src="assets/bag.svg"
+                title="Bevásárló Kosár"
+                class="bag-icon"
+              />
+              <img
+                src="assets/heart.svg"
+                title="Kedvencek"
+                class="heart-icon"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="gyuruk-container">
+          <div class="ring-item">
+            <img
+              src="assets/neklace5.jpg"
+              title="Arany nyaklánc"
+              class="ring-image"
+            />
+            <div class="ring-details">
+              arany nyaklánc | 50 000Ft
+              <img
+                src="assets/bag.svg"
+                title="Bevásárló Kosár"
+                class="bag-icon"
+              />
+              <img
+                src="assets/heart.svg"
+                title="Kedvencek"
+                class="heart-icon"
+              />
+            </div>
+          </div>
+
+          <div class="ring-item">
+            <img
+              src="assets/neklace6.jpg"
+              title="Arany nyaklánc"
+              class="ring-image"
+            />
+            <div class="ring-details">
+              arany nyaklánc | 50 000Ft
+              <img
+                src="assets/bag.svg"
+                title="Bevásárló Kosár"
+                class="bag-icon"
+              />
+              <img
+                src="assets/heart.svg"
+                title="Kedvencek"
+                class="heart-icon"
+              />
+            </div>
+          </div>
+
+          <div class="ring-item">
+            <img
+              src="assets/neklace7.jpg"
+              title="Arany nyaklánc"
+              class="ring-image"
+            />
+            <div class="ring-details">
+              arany nyaklánc | 50 000Ft
+              <img
+                src="assets/bag.svg"
+                title="Bevásárló Kosár"
+                class="bag-icon"
+              />
+              <img
+                src="assets/heart.svg"
+                title="Kedvencek"
+                class="heart-icon"
+              />
+            </div>
+          </div>
+
+          <div class="ring-item">
+            <img
+              src="assets/neklace8.jpg"
+              title="Arany nyaklánc"
+              class="ring-image"
+            />
+            <div class="ring-details">
+              arany nyaklánc | 50 000Ft
+              <img
+                src="assets/bag.svg"
+                title="Bevásárló Kosár"
+                class="bag-icon"
+              />
+              <img
+                src="assets/heart.svg"
+                title="Kedvencek"
+                class="heart-icon"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      $("#termek-hozzaadas").click(function (e) {
+        e.preventDefault();
+        
+        $("#termekek-hozzaadasa-modal").removeClass("hidden");
+        $("#termekek-hozzaadasa-modal").addClass("col");
+
+      });
+      $("#close").click(function (e) {
+        e.preventDefault();
+        
+        $("#termekek-hozzaadasa-modal").removeClass("col");
+        $("#termekek-hozzaadasa-modal").addClass("hidden");
+
+      });
+    </script>
+  </body>
+</html>

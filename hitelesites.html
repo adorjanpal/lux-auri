@@ -19,7 +19,7 @@
         <form
           id="regisztracio-form"
           class="register-form"
-          action="#"
+          action="./fuggvenyek/regisztracio.php"
           method="post"
         >
           <h2>REGISZTRÁCIÓ</h2>
@@ -103,7 +103,7 @@
           </div>
 
           <div class="nav-container">
-            <a class="btn text-center" href="index.html"> Regisztráció </a>
+            <button class="btn text-center">Regisztráció</button>
 
             <div class="bejelentkezes-nav-container">
               <p>Van már fiókod?</p>
@@ -117,20 +117,22 @@
         <!-- Bejelentkezési Űrlap -->
         <form
           class="register-form hidden"
-          action="#"
+          action="./fuggvenyek/bejelentkezes.php"
           method="post"
           id="bejelentkezes-form"
         >
           <h2>BEJELENTKEZÉS</h2>
           <div class="form-item">
-            <label class="form-label" for="email">email</label>
+            <label class="form-label" for="felhasznalonev"
+              >felhasználónév</label
+            >
             <input
               class="form-input"
               type="text"
-              id="email2"
-              name="email"
+              id="felhasznalonev2"
+              name="felhasznalonev2"
               required
-              placeholder="email..."
+              placeholder="felhasználónév..."
             />
           </div>
 
@@ -140,14 +142,14 @@
               class="form-input"
               type="password"
               id="jelszo2"
-              name="jelszo"
+              name="jelszo2"
               required
               placeholder="jelszó..."
             />
           </div>
 
           <div class="nav-container">
-            <a class="btn text-center" href="index.html"> Bejelentkezés</a>
+            <button class="btn text-center">Bejelentkezés</button>
 
             <div class="bejelentkezes-nav-container">
               <p id="van">Nincs fiókod?</p>

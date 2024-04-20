@@ -3,6 +3,8 @@
   include_once('./fuggvenyek/dbfuggvenyek.php');
   
   $aktualisFelhasznalo = felhasznalot_leker($_SESSION['felhasznalonev']);
+  
+
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +46,7 @@
         <!-- Profil fejléc -->
         <div class="profile-header">
           
-          <img class="profil-img" src="felhasznalo_kepek/<?php echo $aktualisFelhasznalo['profilkep'] ?  $aktualisFelhasznalo['profilkep'] : 'default.jpg' ?>" alt="Profilkép" />
+          <img class="profil-img mb-1 mr-1" src="felhasznalo_kepek/<?php echo $aktualisFelhasznalo['profilkep'] ?  $aktualisFelhasznalo['profilkep'] : 'default.jpg' ?>" alt="Profilkép" />
           <div>
             <span><?php echo $aktualisFelhasznalo['nev'] ?></span>
             <span><?php echo $aktualisFelhasznalo['felhasznalonev'] ?></span>
@@ -153,10 +155,10 @@
               </div>
               <div class="profil-form-item">
                 <label class="select-label" for="nem">Neme</label>
-                <select name="nem" id="nem" value="<?php echo $aktualisFelhasznalo['ferfi'] ?>">
-                  <option selected>- Nincs megadva -</option>
-                  <option value="1">Férfi</option>
-                  <option value="0">Nő</option>
+                <select name="nem" id="nem">
+                  <option <?php ($aktualisFelhasznalo['ferfi']) === null && "selected" ?>>- Nincs megadva -</option>
+                  <option <?php ($aktualisFelhasznalo['ferfi']) === '1' && "selected" ?> value=1>Férfi</option>
+                  <option <?php ($aktualisFelhasznalo['ferfi'] === '0') && "selected" ?> value=0>Nő</option>
                 </select>
               </div>
             </div>

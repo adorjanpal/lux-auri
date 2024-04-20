@@ -16,20 +16,7 @@
 
   <body >
  
-    <header>
-      <nav class="navbar">
-        <a href="index.html"><h1>LUXAURI</h1></a>
-        <span class="nav-icon-container"
-          ><a href="kosar.html"
-            ><img src="assets/bag.svg" alt="Bevasarlo Kosar"
-          /></a>
-          <a href="kedvencek.html"
-            ><img src="assets/heart.svg" alt="Kedvencek"
-          /></a>
-          <a href="profil.html"><img src="assets/person.svg" alt="Profil" /></a>
-        </span>
-      </nav>
-    </header>
+    <?php include("./layout/header.php") ?>
     <main class="relative p-3">
     <div class="hidden modal-container" id="termekek-hozzaadasa-modal">
           <img src="assets/x-lg.svg" class="x-btn pointer" id="close" alt="Close modal">
@@ -58,7 +45,7 @@
         <?php
            if ($termekek) {
             while($egysor = mysqli_fetch_assoc($termekek)){
-              $csillagok;
+             
               
               echo '<div class="col relative mt-1">'.
               '<img src="assets/heart-white.svg" class = "icon-s absolute top-1 right-1 pointer"/>'.

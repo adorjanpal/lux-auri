@@ -16,19 +16,21 @@
       if ($aktualisFelhasznalo["email"] !== $email) {
         $modositando['email'] = $email;
       }
-      else if ($aktualisFelhasznalo["lakcim"] !== $lakcim) {
+      if ($aktualisFelhasznalo["lakcim"] !== $lakcim) {
         $modositando[ 'lakcim']  = $lakcim;
       }
-      else if ($aktualisFelhasznalo["szuletesi_datum"]!== $szuletesi_datum) {
+      if ($aktualisFelhasznalo["szuletesi_datum"]!== $szuletesi_datum) {
+        
         $modositando['szuletesi_datum'] = $szuletesi_datum;
       }
-      else if ($aktualisFelhasznalo["telefonszam"] !== $telefonszam) {
+      if ($aktualisFelhasznalo["telefonszam"] !== $telefonszam) {
         $modositando['telefonszam']=$telefonszam;
       }
-      else if ($aktualisFelhasznalo["ferfi"] !== $nem) {
+      if ($aktualisFelhasznalo["ferfi"] !== $nem) {
+        echo $aktualisFelhasznalo['ferfi'].'medadott: '.$nem;
         $modositando['ferfi'] = $nem;
       }
-      else if ($aktualisFelhasznalo["profilkep"] !== $file['name']) {
+      if ($aktualisFelhasznalo["profilkep"] !== $file['name']) {
         $modositando['profilkep']=$file;
       }
       
@@ -38,7 +40,7 @@
               
       felhasznalot_modosit($modositando, $felhasznalonev);
       
-      header("Location: ../profil.php");
+    //   header("Location: ../profil.php");
       
 
   

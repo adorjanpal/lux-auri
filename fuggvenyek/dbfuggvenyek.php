@@ -77,20 +77,13 @@
         if (!($conn = adatbazis_csatlakozas())) {
             return false;
         }
-    
-
         $sql ="
         WITH
             ertekeles AS (SELECT SUM(csillag)/COUNT(*) as csillag,termek_id FROM ERTEKELESEK INNER JOIN TERMEKEK ON ERTEKELESEK.termek_id = TERMEKEK.id), 
             kep AS (SELECT cim,tipus,termek_id,ar,nev FROM KEPEK INNER JOIN TERMEKEK ON KEPEK.termek_id = TERMEKEK.id) 
             SELECT * FROM kep LEFT JOIN ertekeles ON kep.termek_id = ertekeles.termek_id WHERE tipus= '$tipus';
             ";
-    
-        
-
         $eredmeny = mysqli_query($conn,$sql);
-        
-
         
         mysqli_close($conn);
         return $eredmeny;
@@ -111,6 +104,34 @@
         
     }
 
+    function termeket_leker_id($termek_id){
+        if (!($conn = adatbazis_csatlakozas())) {
+            return false;
+        }
+
+        $sql = "SELECT * FROM TERMEKEK WHERE id = '$termek_id'";
+
+        $eredmeny = mysqli_query($conn, $sql);
+
+        mysqli_close($conn);
+        return $eredmeny;
+    }
+
+    function kosarat_leker($felhasznalonev){
+        if (!($conn = adatbazis_csatlakozas())) {
+            return false;
+        }
+        $sql = "WITH 
+            kepek AS (SELECT termek_id,cim,ar,nev,meret FROM KEPEK INNER JOIN TERMEKEK ON KEPEK.termek_id = TERMEKEK.id),
+            kosar AS (SELECT termek_id,felhasznalonev,kosarhoz,hozzaad.mennyiseg FROM HOZZAAD INNER JOIN TERMEKEK ON HOZZAAD.termek_id = TERMEKEK.id)
+        SELECT * FROM kepek INNER JOIN kosar ON kepek.termek_id = kosar.termek_id WHERE FELHASZNALONEV = '$felhasznalonev' AND kosarhoz = 1
+        ";
+
+        $kosarEredmeny = mysqli_query($conn,$sql);
+
+        return $kosarEredmeny;
+    }
+
     function felhasznalot_modosit($modositando, $felhasznalonev){
         if (!($conn = adatbazis_csatlakozas())) {
             return false;
@@ -127,3 +148,6 @@
 
         mysqli_close($conn);
     }
+
+
+    

@@ -1,7 +1,7 @@
 <?php
   include_once("./fuggvenyek/dbfuggvenyek.php");
   $termekek = termekeket_leker("nyaklánc");
-  print_r($termekek)
+
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +30,7 @@
         </span>
       </nav>
     </header>
-    <main class="relative">
+    <main class="relative p-3">
     <div class="hidden modal-container" id="termekek-hozzaadasa-modal">
           <img src="assets/x-lg.svg" class="x-btn pointer" id="close" alt="Close modal">
           <?php include 'termekek_hozzaadasa.php'; ?>
@@ -41,11 +41,7 @@
           <button class="btn hozzaadas" id="termek-hozzaadas">
             Termék hozzáadása
           </button>
-         
-         <div>
-        
          </div>
-        </div>
         <p class="gyuruk-text">
           Fedezze fel lenyűgöző nyakláncainkat, melyek kifinomultságot és
           stílust kölcsönöznek viselőjüknek. Válasszon a vintage bájú, modern
@@ -58,202 +54,44 @@
         <div class="filters-order">Filters | Order by</div>
         
         <div class="gyuruk-container">
+          
         <?php
            if ($termekek) {
-           for ($i=0; $i < count($termekek); $i++) { 
-            
-           
-            
-              echo '<div class="col">'.
-                '<img src=/images/'.$termekek["kep"].'/>'.
-                '<div class="col gap-5">'.
-                  '<span>'.$termekek["nev"].'</span>'.
-                  '<span>'.$termekek["ar"].'</span>'.
-                '</div>'.
-              '</div>';
+            while($egysor = mysqli_fetch_assoc($termekek)){
+              $csillagok;
+              
+              echo '<div class="col relative mt-1">'.
+              '<img src="assets/heart-white.svg" class = "icon-s absolute top-1 right-1 pointer"/>'.
+              '<img class="termek-img" src="./termek_kepek/'.$egysor["cim"].'"/>'.
+              '<div class="col gap-05 ">'.
+              '<span class="csillagok">';
+              if ($egysor["csillag"]) {
+                for ($i=0; $i < intval($egysor["csillag"]); $i++) { 
+                  echo '<img id="star-1" src="assets/star-fill.svg" alt="1. csillag" />';
+                };
+              } else {
+                for ($i=0; $i < 5; $i++) { 
+                  echo '<img id="star-1" src="assets/star.svg" alt="1. csillag" />';
+                };
+              }
+               echo'</span>'.
+                '<span class="large ">'.$egysor["nev"].'</span>'.
+                '<span class="large" >'.$egysor["ar"].' Ft'.'</span>'.
+                
+              '</div>'.
+            '</div>';
 
+              
             }
            } else {
             echo '<span>Sajnos nem található termék az adott kategóriában :(</span>';
            }
         ?>
        
-          <a href="termek.html">
-            <div class="ring-item">
-              <img
-                src="assets/neklace1.jpg"
-                title="Arany nyaklánc"
-                class="ring-image"
-              />
-              <div class="ring-details">
-                Arany nyaklánc | 50 000Ft
-                <img
-                  src="assets/bag.svg"
-                  title="Bevásárló Kosár"
-                  class="bag-icon"
-                />
-                <img
-                  src="assets/heart.svg"
-                  title="Kedvencek"
-                  class="heart-icon"
-                />
-              </div>
-            </div>
-          </a>
-
-          <a href="termek.html">
-            <div class="ring-item">
-              <img
-                src="assets/neklace2.jpg"
-                title="Arany nyaklánc"
-                class="ring-image"
-              />
-              <div class="ring-details">
-                arany nyaklánc | 50 000Ft
-                <img
-                  src="assets/bag.svg"
-                  title="Bevásárló Kosár"
-                  class="bag-icon"
-                />
-                <img
-                  src="assets/heart.svg"
-                  title="Kedvencek"
-                  class="heart-icon"
-                />
-              </div>
-            </div>
-          </a>
-
-          <a href="termek.html">
-            <div class="ring-item">
-              <img
-                src="assets/neklace3.jpg"
-                title="Arany nyaklánc"
-                class="ring-image"
-              />
-              <div class="ring-details">
-                jo nyaklánc | 50 000Ft
-                <img
-                  src="assets/bag.svg"
-                  title="Bevásárló Kosár"
-                  class="bag-icon"
-                />
-                <img
-                  src="assets/heart.svg"
-                  title="Kedvencek"
-                  class="heart-icon"
-                />
-              </div>
-            </div>
-          </a>
-
-          <div class="ring-item">
-            <img
-              src="assets/neklace4.jpg"
-              title="Arany nyaklánc"
-              class="ring-image"
-            />
-            <div class="ring-details">
-              szep nyaklánc | 50 000Ft
-              <img
-                src="assets/bag.svg"
-                title="Bevásárló Kosár"
-                class="bag-icon"
-              />
-              <img
-                src="assets/heart.svg"
-                title="Kedvencek"
-                class="heart-icon"
-              />
-            </div>
-          </div>
+          
         </div>
 
-        <div class="gyuruk-container">
-          <div class="ring-item">
-            <img
-              src="assets/neklace5.jpg"
-              title="Arany nyaklánc"
-              class="ring-image"
-            />
-            <div class="ring-details">
-              arany nyaklánc | 50 000Ft
-              <img
-                src="assets/bag.svg"
-                title="Bevásárló Kosár"
-                class="bag-icon"
-              />
-              <img
-                src="assets/heart.svg"
-                title="Kedvencek"
-                class="heart-icon"
-              />
-            </div>
-          </div>
-
-          <div class="ring-item">
-            <img
-              src="assets/neklace6.jpg"
-              title="Arany nyaklánc"
-              class="ring-image"
-            />
-            <div class="ring-details">
-              arany nyaklánc | 50 000Ft
-              <img
-                src="assets/bag.svg"
-                title="Bevásárló Kosár"
-                class="bag-icon"
-              />
-              <img
-                src="assets/heart.svg"
-                title="Kedvencek"
-                class="heart-icon"
-              />
-            </div>
-          </div>
-
-          <div class="ring-item">
-            <img
-              src="assets/neklace7.jpg"
-              title="Arany nyaklánc"
-              class="ring-image"
-            />
-            <div class="ring-details">
-              arany nyaklánc | 50 000Ft
-              <img
-                src="assets/bag.svg"
-                title="Bevásárló Kosár"
-                class="bag-icon"
-              />
-              <img
-                src="assets/heart.svg"
-                title="Kedvencek"
-                class="heart-icon"
-              />
-            </div>
-          </div>
-
-          <div class="ring-item">
-            <img
-              src="assets/neklace8.jpg"
-              title="Arany nyaklánc"
-              class="ring-image"
-            />
-            <div class="ring-details">
-              arany nyaklánc | 50 000Ft
-              <img
-                src="assets/bag.svg"
-                title="Bevásárló Kosár"
-                class="bag-icon"
-              />
-              <img
-                src="assets/heart.svg"
-                title="Kedvencek"
-                class="heart-icon"
-              />
-            </div>
-          </div>
-        </div>
+       
       </div>
     </main>
     <script>

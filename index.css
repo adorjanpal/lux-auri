@@ -562,6 +562,10 @@ header {
   display: flex;
 }
 
+.gap-05 {
+  gap: 0.5rem;
+}
+
 .gap-1 {
   gap: 1rem;
 }
@@ -602,6 +606,10 @@ header {
   color: gray;
 }
 
+.mt-1 {
+  margin-top: 1rem;
+}
+
 .ml-1 {
   margin-left: 1rem;
 }
@@ -622,6 +630,18 @@ header {
   padding-bottom: 1rem;
 }
 
+.p-3 {
+  padding: 3rem;
+}
+
+.right-1 {
+  right: 1rem;
+}
+
+.top-1 {
+  top: 1rem;
+}
+
 .w-inherit {
   width: inherit;
 }
@@ -639,6 +659,10 @@ header {
   cursor: pointer;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .col {
   display: flex;
   flex-direction: column;
@@ -654,14 +678,16 @@ header {
   object-fit: cover;
 }
 
+.icon-s {
+  height: 1rem;
+  width: 1rem;
+}
+
 /* Gyűrűk, nyakláncok, karkötők */
 
 .gyuruk-heading {
   align-self: flex-start;
   width: 100%;
-  position: absolute;
-  top: -15rem;
-  left: 1rem;
 }
 
 .gyuruk-text {
@@ -672,7 +698,8 @@ header {
 }
 
 .grey-line {
-  height: 3px;
+  opacity: 60%;
+  height: 1px;
   background-color: rgb(146, 146, 146);
   width: 95%;
 }
@@ -716,6 +743,8 @@ header {
 
 .gyuruk-container {
   display: flex;
+  width: 100%;
+  gap: 3rem;
 }
 
 .ring-item {
@@ -779,4 +808,12 @@ input[type="file"] {
   height: 2rem;
   top: 5rem;
   right: 20rem;
+}
+
+.termek-img {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-bottom: 1rem;
 }

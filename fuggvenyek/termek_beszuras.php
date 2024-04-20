@@ -1,8 +1,5 @@
 <?php
   include_once("./dbfuggvenyek.php"); 
-    
-
- 
   $nev = $_POST['nev'];
   $ar = $_POST['ar'];
   $mennyiseg = $_POST['mennyiseg'];

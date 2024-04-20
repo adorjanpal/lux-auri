@@ -13,7 +13,7 @@
     
 }
 
-    function kepet_beszur_termekhez($nev, $termek_id){
+    function kepet_beszur_termekhez($termek_id){
         if (!($conn = adatbazis_csatlakozas()) || !($_FILES['kep']['name'])) {
             return false;
         }
@@ -29,6 +29,21 @@
         $sikeres = mysqli_stmt_execute($stmt);
 
         return $sikeres;
+
+
+    }
+
+    function kepet_beszur_felhasznalohoz($felhasznalonev){
+        if (!($conn = adatbazis_csatlakozas()) || !($_FILES['profilkep']['name'])) {
+            return false;
+        }
+        
+        $eleresi_ut = "../felhasznalo_kepek/";
+        $nev = strtolower($_FILES['profilkep']["name"]);
+        move_uploaded_file($_FILES['profilkep']['tmp_name'], $eleresi_ut.$nev);
+
+        $stmt = mysqli_query( $conn,"UPDATE FELHASZNALOK SET profilkep = '$nev' WHERE felhasznalonev = '$felhasznalonev'");
+        return $stmt;
 
 
     }
@@ -50,7 +65,7 @@
             $sql = "SELECT id FROM TERMEKEK ORDER BY id DESC LIMIT 1";
             $eredmeny = mysqli_query($conn, $sql);
             $termek_id = mysqli_fetch_assoc($eredmeny);
-            kepet_beszur_termekhez($kep,$termek_id["id"]);
+            kepet_beszur_termekhez($termek_id["id"]);
         }
         
         
@@ -79,4 +94,36 @@
         
         mysqli_close($conn);
         return $eredmeny;
+    }
+
+    function felhasznalot_leker($felhasznalonev){
+        if (!($conn = adatbazis_csatlakozas())) {
+            return false;
+        }
+        $sql = "SELECT * FROM FELHASZNALOK WHERE felhasznalonev = '$felhasznalonev'";
+        $query = mysqli_query($conn, $sql);
+
+        $eredmeny = mysqli_fetch_assoc($query);
+
+        mysqli_close($conn);
+
+        return $eredmeny;
+        
+    }
+
+    function felhasznalot_modosit($modositando, $felhasznalonev){
+        if (!($conn = adatbazis_csatlakozas())) {
+            return false;
+        }
+
+        foreach ($modositando as $key => $value) {
+            if ($key == 'profilkep') {
+                kepet_beszur_felhasznalohoz($felhasznalonev);
+            } else {
+                mysqli_query($conn, "UPDATE FELHASZNALOK SET $key = '$value' WHERE felhasznalonev = '$felhasznalonev'");
+            }
+        }
+        
+
+        mysqli_close($conn);
     }

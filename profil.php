@@ -1,3 +1,10 @@
+<?php   
+  session_start();
+  include_once('./fuggvenyek/dbfuggvenyek.php');
+  
+  $aktualisFelhasznalo = felhasznalot_leker($_SESSION['felhasznalonev']);
+?>
+
 <!DOCTYPE html>
 <html lang="hu">
   <head>
@@ -36,14 +43,14 @@
         </div>
         <!-- Profil fejléc -->
         <div class="profile-header">
-          <img class="profil-img" src="/assets/default.jpg" alt="Profilkép" />
+          
+          <img class="profil-img" src="felhasznalo_kepek/<?php echo $aktualisFelhasznalo['profilkep'] ?  $aktualisFelhasznalo['profilkep'] : 'default.jpg' ?>" alt="Profilkép" />
           <div>
-            <span>Kis István</span>
-            <span>kisspista6000</span>
+            <span><?php echo $aktualisFelhasznalo['nev'] ?></span>
+            <span><?php echo $aktualisFelhasznalo['felhasznalonev'] ?></span>
           </div>
-          <img src="/assets/box-arrow-right.svg" alt="Kijelentkezés Gomb" />
+          <img src="assets/box-arrow-right.svg" alt="Kijelentkezés Gomb" />
         </div>
-
         <!-- Korábbi rendelések -->
         <div
           id="korabbi-rendelesek"
@@ -98,11 +105,13 @@
         <div id="profil-adatok-container" class="profil-adatok-container">
           <form
             id="profil-form"
+            enctype="multipart/form-data"
             class="register-form profil-form"
-            action="#"
+            action="./fuggvenyek/felhasznalo_modositas.php"
             method="post"
           >
             <h2>Profil adatok</h2>
+            <input type="hidden" name="felhasznalonev" id="felhasznalonev" value="<?php echo $aktualisFelhasznalo["felhasznalonev"] ?>">
             <div class="form-item">
               <label class="form-label" for="lakcim">Lakcím</label>
               <input
@@ -110,43 +119,44 @@
                 type="text"
                 id="lakcim"
                 name="lakcim"
-                value="Budapest, Kossuth utca 10."
+                value="<?php echo $aktualisFelhasznalo['lakcim'] ?>"
                 placeholder="Lakcím..."
-                required
+                
               />
             </div>
             <div class="form-item">
               <label class="form-label" for="telefonszam">Telefonszám</label>
               <input
                 class="form-input"
-                type="tel"
+                type="text"
                 id="telefonszam"
                 name="telefonszam"
-                required
-                value="06 70 2386413"
+                placeholder="Telefonszám..."
+                
+                value="<?php echo $aktualisFelhasznalo['telefonszam'] ?>"
               />
             </div>
 
             <div class="nev-container">
               <div class="profil-form-item">
-                <label class="date-label" for="szulDatum"
+                <label class="date-label" for="szuletesi_datum"
                   >Születési dátum</label
                 >
                 <input
                   class="form-input date-input"
                   type="date"
-                  id="szulDatum"
-                  name="szulDatum"
-                  required
-                  value="1985-03-24"
+                  id="szuletesi_datum"
+                  name="szuletesi_datum"
+                  
+                  value="<?php echo $aktualisFelhasznalo['szuletesi_datum'] ?>"
                 />
               </div>
               <div class="profil-form-item">
-                <label class="select-label" for="neme">Neme</label>
-                <select name="neme" id="neme">
+                <label class="select-label" for="nem">Neme</label>
+                <select name="nem" id="nem" value="<?php echo $aktualisFelhasznalo['ferfi'] ?>">
                   <option selected>- Nincs megadva -</option>
-                  <option value="0">Férfi</option>
-                  <option value="1">Nő</option>
+                  <option value="1">Férfi</option>
+                  <option value="0">Nő</option>
                 </select>
               </div>
             </div>
@@ -158,8 +168,17 @@
                 type="email"
                 id="email"
                 name="email"
-                required
-                value="kisspista6000@yandex.ru"
+                
+                value="<?php echo $aktualisFelhasznalo['email'] ?>"
+              />
+            </div>
+            <div class="form-item">
+              <label class="form-label" for="profilkep">Profilkép</label>
+              <input
+                class="form-input"
+                type="file"
+                id="profilkep"
+                name="profilkep"
               />
             </div>
             <button class="btn">Adatok módosítása</button>

@@ -363,7 +363,8 @@ header {
 
 .profil-img {
   width: 5rem;
-  object-fit: contain;
+  height: 5rem;
+  object-fit: cover;
 }
 
 .profile-header {
@@ -795,11 +796,6 @@ header {
 
 textarea {
   resize: none;
-}
-
-input[type="file"] {
-  opacity: 0;
-  width: 100%;
 }
 
 .x-btn {

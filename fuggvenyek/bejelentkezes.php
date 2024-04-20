@@ -1,4 +1,5 @@
 <?php
+session_start();
 include ('./dbfuggvenyek.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $hash = $row["jelszo"];
         if (password_verify($jelszo, $hash)) {
-            session_start();
+           
             $_SESSION['felhasznalonev'] = $felhasznalonev;
             
             header("Location: ../index.html");

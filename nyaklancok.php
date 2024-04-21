@@ -14,7 +14,7 @@
     <title>Nyakláncok</title>
   </head>
 
-  <body >
+  <body class="relative" >
  
     <?php include("./layout/header.php") ?>
     <main class="relative p-3">
@@ -80,7 +80,9 @@
 
        
       </div>
+     
     </main>
+    <?php include('./layout/footer.php') ?>
     <script>
       $("#termek-hozzaadas").click(function (e) {
         e.preventDefault();

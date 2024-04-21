@@ -40,7 +40,7 @@
               
       felhasznalot_modosit($modositando, $felhasznalonev);
       
-    //   header("Location: ../profil.php");
+      header("Location: ../profil.php");
       
 
   

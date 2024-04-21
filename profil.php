@@ -184,6 +184,10 @@
               />
             </div>
             <button class="btn">Adatok módosítása</button>
+            <form method="POST" action="./fuggvenyek/felhasznalo_torles.php">
+              <input type="hidden" name="felhasznalonev" value="<?php echo $aktualisFelhasznalo["felhasznalonev"] ?>">
+              <button class="btn eltavolitas-btn">Fiók törlése</button>
+            </form>
           </form>
         </div>
       </div>

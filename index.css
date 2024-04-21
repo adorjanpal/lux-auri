@@ -661,6 +661,18 @@ header {
   width: inherit;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
+.py-3 {
+  padding: 3rem 0;
+}
+
+.py-1 {
+  padding: 1rem 0;
+}
+
 .w-full {
   width: 100%;
 }
@@ -672,6 +684,10 @@ header {
 
 .pointer {
   cursor: pointer;
+}
+
+.bottom-0 {
+  bottom: 0;
 }
 
 .absolute {
@@ -837,4 +853,8 @@ textarea {
 
 .db-input:focus {
   outline: none;
+}
+
+footer {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

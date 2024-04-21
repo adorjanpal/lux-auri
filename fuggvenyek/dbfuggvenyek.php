@@ -149,5 +149,33 @@
         mysqli_close($conn);
     }
 
+    function felhasznalot_torol($felhasznalonev){
+        if (!($conn = adatbazis_csatlakozas())) {
+            return false;
+        }
+
+        $sql = "DELETE FROM FELHASZNALOK WHERE felhasznalonev = '$felhasznalonev'";
+
+        $eredmeny = mysqli_query($conn,$sql);
+
+        return $eredmeny;
+    }
+
+    function uzenetet_beszur($felhasznalonev, $tartalom, $szulo){
+        if (!($conn = adatbazis_csatlakozas())) {
+            return false;
+        }
+
+        $idopont = date('YYYY-MM-DD hh:mi:ss');
+
+        $stmt = mysqli_prepare( $conn,"INSERT INTO UZENETEK(iro, tartalom, szulo,idopont) VALUES (?, ?, ?,?)");
+
+        mysqli_stmt_bind_param($stmt, "s,s,i,s", $iro, $tartalom, $szulo, $idopont);
+
+        $sikeres = mysqli_stmt_execute($stmt);
+
+        return $sikeres;
+    }
+
 
     

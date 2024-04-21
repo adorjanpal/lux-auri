@@ -299,6 +299,7 @@ header {
 
 .kosar-main {
   justify-content: flex-start;
+  align-items: flex-start;
   padding-left: 4rem;
 }
 
@@ -506,8 +507,9 @@ header {
 .termek-container {
   margin-top: 10rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  width: 100%;
   gap: 2rem;
   position: relative;
 }
@@ -555,7 +557,9 @@ header {
 .termek-adatok-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
   font-size: large;
   width: 25%;
   gap: 1rem;
@@ -665,6 +669,11 @@ header {
   justify-content: center;
 }
 
+.bg-transparent {
+  background-color: transparent;
+  border: none;
+}
+
 .py-3 {
   padding: 3rem 0;
 }
@@ -680,6 +689,10 @@ header {
 .abs-bottom-full {
   position: absolute;
   bottom: 0;
+}
+
+.self-start {
+  align-self: flex-start;
 }
 
 .pointer {
@@ -707,6 +720,14 @@ header {
   height: 4rem;
   width: 4rem;
   object-fit: cover;
+}
+
+.velemeny-container {
+  width: 100%;
+}
+
+.velemenyek-container {
+  width: 50%;
 }
 
 .icon-s {

@@ -10,8 +10,8 @@ include("fuggvenyek/dbfuggvenyek.php");
 $reszosszeg = 0;
 $aktualisFelhasznalo = felhasznalot_leker($_SESSION['felhasznalonev']);
 
-$kosarTetelek = kosarat_leker($_SESSION['felhasznalonev']);
-
+$kosarTetelek = kosarat_leker($_SESSION['felhasznalonev'], 1);
+$termekek = [];
 
 ?>
 
@@ -37,6 +37,7 @@ $kosarTetelek = kosarat_leker($_SESSION['felhasznalonev']);
           <div></div>
         </div>
         <?php foreach ($kosarTetelek as $tétel) : ?>
+
         <div class="kosar-row">
           <div class="elso-oszlop">
             <div class="img-container">
@@ -68,6 +69,7 @@ $kosarTetelek = kosarat_leker($_SESSION['felhasznalonev']);
             <form method="POST" action="./fuggvenyek/kosarbol_torles.php" class="tetel-modositasa-container">
               <input type="hidden" name="id" id="id" value="<?php echo $tétel['termek_id'] ?>">
               <input type="hidden" id="felhasznalonev" name="felhasznalonev" value="<?php echo $aktualisFelhasznalo["felhasznalonev"] ?>">
+              <input type="hidden" id="kosarhoz" name="kosarhoz" value="1">
               <button type="submit" class="btn eltavolitas-btn">Eltávolítás</button>
             </form>
             <form method="POST" action="./fuggvenyek/kosar_modositas.php" class="tetel-modositasa-container">
@@ -82,11 +84,24 @@ $kosarTetelek = kosarat_leker($_SESSION['felhasznalonev']);
             </form>
           </div>
         </div>
+        <?php 
+        $termekek += [$tétel['termek_id'] => $tétel['mennyiseg']];
+        
+        
+      ?>
         <?php endforeach; ?>
       </div>
-      <div class="osszegzes-container">
+      <form action="./fuggvenyek/rendeles_leadas.php" method="POST" class="osszegzes-container">
         <h2>Összesítés</h2>
-        
+        <input type="hidden" name="felhasznalonev" value=<?php echo $aktualisFelhasznalo["felhasznalonev"] ?> >
+        <?php
+          
+          foreach($termekek as $key => $value)
+          { 
+            echo '<input id="" name="termek['.$key.']" type="hidden" value="'. $value.'" />';
+          }
+        ?>
+
         
         <div class="osszesites-div col gap-1">
          
@@ -103,7 +118,7 @@ $kosarTetelek = kosarat_leker($_SESSION['felhasznalonev']);
           </span> <?php echo $reszosszeg + 2000 .' Ft'?>
         </div>
         <button class="btn">Megrendelés</button>
-      </div>
+      </form>
     </main>
   </body>
 </html>

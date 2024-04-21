@@ -3,8 +3,9 @@
   include_once('./fuggvenyek/dbfuggvenyek.php');
   
   $aktualisFelhasznalo = felhasznalot_leker($_SESSION['felhasznalonev']);
-  
+  $korabbi_rendelesek = rendeleseket_leker($aktualisFelhasznalo['felhasznalonev']);
 
+  
 ?>
 
 <!DOCTYPE html>
@@ -18,20 +19,7 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar">
-        <a href="index.html"> <h1>LUXAURI</h1></a>
-        <span class="nav-icon-container"
-          ><a href="kosar.html"
-            ><img src="assets/bag.svg" alt="Bevasarlo Kosar"
-          /></a>
-          <a href="kedvencek.html"
-            ><img src="assets/heart.svg" alt="Kedvencek"
-          /></a>
-          <a href="profil.html"><img src="assets/person.svg" alt="Profil" /></a>
-        </span>
-      </nav>
-    </header>
+  <?php include("./layout/header.php") ?>
     <main class="profil-main">
       <div class="profil-container">
         <div class="adatok-menu-span">
@@ -45,8 +33,8 @@
         </div>
         <!-- Profil fejléc -->
         <div class="profile-header">
-          
-          <img class="profil-img mb-1 mr-1" src="felhasznalo_kepek/<?php echo $aktualisFelhasznalo['profilkep'] ?  $aktualisFelhasznalo['profilkep'] : 'default.jpg' ?>" alt="Profilkép" />
+
+          <?php echo '<img class="profil-img mr-1 mb-1" src="./felhasznalo_kepek/'.((isset($aktualisFelhasznalo["profilkep"]) && $aktualisFelhasznalo["profilkep"] !== '') ? $aktualisFelhasznalo["profilkep"] : "default.jpg").'"/>' ?>
           <div>
             <span><?php echo $aktualisFelhasznalo['nev'] ?></span>
             <span><?php echo $aktualisFelhasznalo['felhasznalonev'] ?></span>
@@ -58,50 +46,34 @@
           id="korabbi-rendelesek"
           class="korabbi-rendelesek-container hidden"
         >
-          <div class="korabbi-rendeles-row">
-            <div class="elso-oszlop">
-              <a href="termek.html" class="img-container">
-                <img src="assets/rings.jpg" alt="gyuru" />
-              </a>
-              <div class="gyuru-details">
-                <a href="#" class="kosar-item-title">Arany gyűrű</a>
-                <div>
-                  <p class="kosar-item-detail">Méret: 40</p>
-                  <p class="kosar-item-detail">Mennyiség: 1</p>
+          <?php
+            while($egysor = mysqli_fetch_assoc($korabbi_rendelesek)){
+              $termek = mysqli_fetch_assoc(termeket_leker_id($egysor['termek_id']));
+             
+              echo '<div class="korabbi-rendeles-row">
+              <div class="elso-oszlop">
+                <div class="img-container">
+                  <img src="./termek_kepek/'.$termek['cim'].'" alt="Kép a termékről" />
+                </div>
+                <div class="gyuru-details">
+                  <a href="#" class="kosar-item-title">'.$egysor['nev'].'</a>
+                  <div>
+                    <p class="kosar-item-detail">'.$egysor['meret'].'</p>
+                    <p class="kosar-item-detail">'.$egysor['mennyiseg'].'</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
-              <p>50 000 FT</p>
-            </div>
-            <div class="tetel-modositasa-container">
+              <div>
+                <p>'.$egysor['ar'].'</p>
+              </div>
               <div class="tetel-modositasa-container">
-                <button class="btn">Megrendelés mégegyszer</button>
-              </div>
-            </div>
-          </div>
-          <div class="korabbi-rendeles-row">
-            <div class="elso-oszlop">
-              <div class="img-container">
-                <img src="assets/rings.jpg" alt="gyuru" />
-              </div>
-              <div class="gyuru-details">
-                <a href="#" class="kosar-item-title">Arany gyűrű</a>
-                <div>
-                  <p class="kosar-item-detail">Méret: 40</p>
-                  <p class="kosar-item-detail">Mennyiség: 1</p>
+                <div class="tetel-modositasa-container">
+                  <button class="btn">Megrendelés mégegyszer</button>
                 </div>
               </div>
-            </div>
-            <div>
-              <p>50 000 FT</p>
-            </div>
-            <div class="tetel-modositasa-container">
-              <div class="tetel-modositasa-container">
-                <button class="btn">Megrendelés mégegyszer</button>
-              </div>
-            </div>
-          </div>
+            </div>';
+            }
+          ?>
         </div>
         <!-- Felhasználó adatai -->
         <div id="profil-adatok-container" class="profil-adatok-container">

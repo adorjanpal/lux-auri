@@ -1,6 +1,6 @@
 <header>
       <nav class="navbar">
-        <a href="index.html"> <h1>LUXAURI</h1></a>
+        <a href="index.php"> <h1>LUXAURI</h1></a>
         <span class="nav-icon-container">
           <a href="kosar.php"
             ><img src="assets/bag.svg" alt="Bevásárló Kosár"

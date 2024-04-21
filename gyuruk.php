@@ -1,7 +1,7 @@
 <?php
   session_start();
   include_once("./fuggvenyek/dbfuggvenyek.php");
-  $termekek = termekeket_leker("nyaklánc");
+  $termekek = termekeket_leker("gyűrű");
   $aktualisFelhasznalo = felhasznalot_leker($_SESSION['felhasznalonev']);
 
 ?>
@@ -108,3 +108,4 @@
     </script>
   </body>
 </html>
+

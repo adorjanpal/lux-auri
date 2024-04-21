@@ -8,24 +8,11 @@
     <title>Home</title>
   </head>
   <body>
-    <header>
-      <nav class="navbar">
-        <a href="hitelesites.html"><h1>LUXAURI</h1></a>
-        <span class="nav-icon-container"
-          ><a href="kosar.html"
-            ><img src="assets/bag.svg" alt="Bevasarlo Kosar"
-          /></a>
-          <a href="kedvencek.html"
-            ><img src="assets/heart.svg" alt="Kedvencek"
-          /></a>
-          <a href="profil.html"><img src="assets/person.svg" alt="Profil" /></a>
-        </span>
-      </nav>
-    </header>
+    <?php include("./layout/header.php") ?> 
     <main>
       <div class="index-container">
         <!-- Karkötők -->
-        <a id="karkotok-link" href="karkotok.html" class="home-img-container">
+        <a id="karkotok-link" href="karkotok.php" class="home-img-container">
           <img src="assets/bracelet.webp" alt="Karkötők" />
           <div class="text-container">
             <h3 id="karkotok-title">Karkötők</h3>
@@ -51,7 +38,7 @@
           </div>
         </a>
         <!-- Gyűrűk -->
-        <a id="gyuruk-link" href="gyuruk.html" class="home-img-container">
+        <a id="gyuruk-link" href="gyuruk.php" class="home-img-container">
           <img src="assets/rings.jpg" alt="Gyűrűk" />
           <div class="text-container">
             <h3>Gyűrűk</h3>

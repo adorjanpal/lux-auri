@@ -11,9 +11,11 @@
   
   $termek = mysqli_fetch_assoc($termek);
   $velemenyekFetch = mysqli_fetch_assoc($velemenyek);
+
+  if (!isset($_SESSION["felhasznalonev"])) {
+    header("Location: ./hitelesites.php");
+  }
   
-  // print_r($velemenyek);
-  // print_r($termek);
  
 ?>
 <!DOCTYPE html>
@@ -31,11 +33,7 @@
     <main class="termek-oldal-main w-full">
 
       <div class="termek-container">
-        <!-- <div class="side-img-container">
-          <img src="assets/ring2.jpg" alt="Fotó a termékről" />
-          <img src="assets/ring5.jpg" alt="Fotó a termékről" />
-          <img src="assets/ring4.jpg" alt="Fotó a termékről" />
-        </div> -->
+       
         <div class="main-img-container">
           <img src="./termek_kepek/<?php echo $termek['cim']?>" alt="Fotó a termékről" />
         </div>
@@ -72,6 +70,15 @@
       </div>
       <div class="velemenyek-container ">
         <h3 class="x-large">Vélemények</h3>
+        <form action="./fuggvenyek/velemeny_kuldes.php" method="POST"  class="col mb-3">
+          <h3>Írja le ön is a véleményét!</h3>
+        <label for="csillag">Csillag</label><input type="number" min='1' max='5' name="csillag">
+        <textarea name="velemeny" id="" cols="30" rows="10" placeholder="Vélemény..."></textarea>
+        <input type="hidden" name="felhasznalonev" value="<?php echo $aktualisFelhasznalo['felhasznalonev'] ?>">
+        <input type="hidden" name="termek_id" value="<?php echo $aktualisFelhasznalo['felhasznalonev'] ?>">
+
+        <button class="btn">Küldés</button>
+        </form>
         <?php
           while($velemeny = mysqli_fetch_assoc($velemenyek_felhasznalok)){
             echo '<div class="velemeny-container items-center border-b-normal-gray pb-1 mb-3 ">

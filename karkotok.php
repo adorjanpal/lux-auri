@@ -3,7 +3,9 @@
   include_once("./fuggvenyek/dbfuggvenyek.php");
   $termekek = termekeket_leker("karkötő");
   $aktualisFelhasznalo = felhasznalot_leker($_SESSION['felhasznalonev']);
-
+  if (!isset($_SESSION["felhasznalonev"])) {
+    header("Location: ./hitelesites.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +29,13 @@
       <div class="gyuruk-heading">
         <div class="row gap-1">
           <h2>Nyakláncok</h2>
-          <button class="btn hozzaadas" id="termek-hozzaadas">
-            Termék hozzáadása
-          </button>
+          <?php
+            if ($aktualisFelhasznalo['admin']) {
+              echo '<button class="btn hozzaadas" id="termek-hozzaadas">
+              Termék hozzáadása
+            </button>';
+            }
+           ?>
          </div>
         <p class="gyuruk-text">
           Fedezze fel lenyűgöző nyakláncainkat, melyek kifinomultságot és
@@ -40,7 +46,7 @@
           nyakláncát!
         </p>
         <div class="grey-line"></div>
-        <div class="filters-order">Filters | Order by</div>
+       
         
         <div class="gyuruk-container">
           

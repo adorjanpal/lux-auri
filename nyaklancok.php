@@ -4,6 +4,9 @@
   $termekek = termekeket_leker("nyaklánc");
   $aktualisFelhasznalo = felhasznalot_leker($_SESSION['felhasznalonev']);
 
+  if (!isset($_SESSION["felhasznalonev"])) {
+    header("Location: ./hitelesites.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +22,7 @@
   <body class="relative" >
  
     <?php include("./layout/header.php") ?>
-    <main class="relative p-3">
+    <main class="relative">
     <div class="hidden modal-container" id="termekek-hozzaadasa-modal">
           <img src="assets/x-lg.svg" class="x-btn pointer" id="close" alt="Close modal">
           <?php include 'termekek_hozzaadasa.php'; ?>
@@ -27,9 +30,13 @@
       <div class="gyuruk-heading">
         <div class="row gap-1">
           <h2>Nyakláncok</h2>
-          <button class="btn hozzaadas" id="termek-hozzaadas">
-            Termék hozzáadása
-          </button>
+          <?php
+            if ($aktualisFelhasznalo['admin']) {
+              echo '<button class="btn hozzaadas" id="termek-hozzaadas">
+              Termék hozzáadása
+            </button>';
+            }
+           ?>
          </div>
         <p class="gyuruk-text">
           Fedezze fel lenyűgöző nyakláncainkat, melyek kifinomultságot és
@@ -40,14 +47,14 @@
           nyakláncát!
         </p>
         <div class="grey-line"></div>
-        <div class="filters-order">Filters | Order by</div>
+        
         
         <div class="gyuruk-container">
           
         <?php
            if ($termekek) {
             while($egysor = mysqli_fetch_assoc($termekek)){
-             
+              
               
               echo '<a href="./termek.php?id='.$egysor['termek_id'].'" class="col relative mt-1">'.
               '<form action="./fuggvenyek/hozzaad.php" method ="POST">
@@ -59,7 +66,9 @@
               '<img class="termek-img" src="./termek_kepek/'.$egysor["cim"].'"/>'.
               '<div class="col gap-05 ">'.
               '<span class="csillagok">';
-              if ($egysor["csillag"]) {
+              
+              if (isset($egysor["csillag"])) {
+                
                 for ($i=0; $i < intval($egysor["csillag"]); $i++) { 
                   echo '<img id="star-1" src="assets/star-fill.svg" alt="1. csillag" />';
                 };

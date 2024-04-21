@@ -5,7 +5,9 @@
   $aktualisFelhasznalo = felhasznalot_leker($_SESSION['felhasznalonev']);
   $korabbi_rendelesek = rendeleseket_leker($aktualisFelhasznalo['felhasznalonev']);
 
-  
+  if (!isset($_SESSION["felhasznalonev"])) {
+    header("Location: ./hitelesites.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -21,13 +23,13 @@
   <body>
   <?php include("./layout/header.php") ?>
     <main class="profil-main">
-      <div class="profil-container">
+      <div class="profil-container relative">
         <div class="adatok-menu-span">
-          <button id="profil-switch" class="link-btn active">
+          <button id="profil-switch" class="link-btn active pointer">
             Profil adatok
           </button>
           <span class="active">|</span>
-          <button id="korabbi-switch" class="link-btn">
+          <button id="korabbi-switch" class="link-btn pointer">
             Korábbi rendelések
           </button>
         </div>
@@ -39,7 +41,9 @@
             <span><?php echo $aktualisFelhasznalo['nev'] ?></span>
             <span><?php echo $aktualisFelhasznalo['felhasznalonev'] ?></span>
           </div>
-          <img src="assets/box-arrow-right.svg" alt="Kijelentkezés Gomb" />
+          <form action="./fuggvenyek/kijelentkezes.php" method="post">
+            <button class="bg-transparent pointer"><img src="assets/box-arrow-right.svg" alt="Kijelentkezés Gomb" /></button>
+          </form>
         </div>
         <!-- Korábbi rendelések -->
         <div
@@ -49,32 +53,33 @@
           <?php
             while($egysor = mysqli_fetch_assoc($korabbi_rendelesek)){
               $termek = mysqli_fetch_assoc(termeket_leker_id($egysor['termek_id']));
-             
               echo '<div class="korabbi-rendeles-row">
               <div class="elso-oszlop">
-                <div class="img-container">
-                  <img src="./termek_kepek/'.$termek['cim'].'" alt="Kép a termékről" />
-                </div>
-                <div class="gyuru-details">
-                  <a href="#" class="kosar-item-title">'.$egysor['nev'].'</a>
-                  <div>
-                    <p class="kosar-item-detail">'.$egysor['meret'].'</p>
-                    <p class="kosar-item-detail">'.$egysor['mennyiseg'].'</p>
-                  </div>
-                </div>
+              <div class="img-container">
+                <img src="./termek_kepek/'.$termek['cim'].'" alt="Kép a termékről" />
               </div>
+              <div class="gyuru-details">
+               <a href="#" class="kosar-item-title">'.$termek['nev'].'</a>
               <div>
-                <p>'.$egysor['ar'].'</p>
+                <p class="kosar-item-detail"> Méret: '.$termek['meret'].'</p>
+                <p class="kosar-item-detail"> Mennyiség: '.$termek['mennyiseg'].'</p>
               </div>
-              <div class="tetel-modositasa-container">
-                <div class="tetel-modositasa-container">
-                  <button class="btn">Megrendelés mégegyszer</button>
-                </div>
-              </div>
-            </div>';
+            </div>
+          </div>
+          <div>
+            <p>Ár: '.$termek['ar'].'</p>
+          </div>
+          
+        </div>';
+              
             }
+
+            
+            
+            
           ?>
         </div>
+       
         <!-- Felhasználó adatai -->
         <div id="profil-adatok-container" class="profil-adatok-container">
           <form

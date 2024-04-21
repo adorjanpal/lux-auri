@@ -1,3 +1,10 @@
+ <?php
+ session_start();
+ if (!isset($_SESSION["felhasznalonev"])) {
+  header("Location: ./hitelesites.php");
+}
+ ?>
+
 <!DOCTYPE html>
 <html lang="hu">
   <head>
@@ -9,7 +16,7 @@
   </head>
   <body>
     <?php include("./layout/header.php") ?> 
-    <main>
+    <main class="row items-center h-screen w-full">
       <div class="index-container">
         <!-- Karkötők -->
         <a id="karkotok-link" href="karkotok.php" class="home-img-container">
@@ -50,6 +57,7 @@
         </a>
       </div>
     </main>
+   
     <script>
       //Szöveg megjelenítése, ha ráviszi a felhasználó a kurzort (karkötők)
       $("#karkotok-link").mouseover(function (e) {

@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['felhasznalonev'])) {
-    header("Location: index.html");
+    header("Location: ./hitelesites.php");
     exit();
 }
 

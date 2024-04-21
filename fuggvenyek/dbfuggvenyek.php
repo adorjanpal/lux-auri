@@ -79,9 +79,9 @@
         }
         $sql ="
         WITH
-            ertekeles AS (SELECT SUM(csillag)/COUNT(*) as csillag,termek_id FROM ERTEKELESEK INNER JOIN TERMEKEK ON ERTEKELESEK.termek_id = TERMEKEK.id), 
+            ertekeles AS (SELECT SUM(csillag)/COUNT(*) as csillag,termek_id FROM ERTEKELESEK INNER JOIN TERMEKEK ON ERTEKELESEK.termek_id = TERMEKEK.id GROUP BY termek_id), 
             kep AS (SELECT cim,tipus,termek_id,ar,nev FROM KEPEK INNER JOIN TERMEKEK ON KEPEK.termek_id = TERMEKEK.id) 
-            SELECT cim,kep.termek_id,tipus,nev,csillag,ar FROM kep LEFT JOIN ertekeles ON kep.termek_id = ertekeles.termek_id WHERE tipus= '$tipus';
+            SELECT cim,kep.termek_id,tipus,nev,csillag,ar FROM kep LEFT JOIN ertekeles ON kep.termek_id = ertekeles.termek_id WHERE tipus= '$tipus'
             ";
         $eredmeny = mysqli_query($conn,$sql);
         
@@ -283,16 +283,26 @@
         if (!($conn = adatbazis_csatlakozas())) {
             return false;
         }
-        $sql = "
-        WITH 
-         TERMEK AS (SELECT * FROM TERMEKEK_RENDELESEK INNER JOIN TERMEKEK ON TERMEKEK_RENDELESEK.termek_id = TERMEKEK.id),
-         RENDELOK AS (SELECT * FROM TERMEKEK_RENDELESEK INNER JOIN RENDELESEK ON RENDELESEK.id = TERMEKEK_RENDELESEK.rendeles_id)
-        SELECT * FROM TERMEK,RENDELOK WHERE felhasznalonev = '$felhasznalonev';
-         ";
+        $sql = "SELECT * FROM RENDELESEK INNER JOIN TERMEKEK_RENDELESEK ON TERMEKEK_RENDELESEK.RENDELES_ID = RENDELESEK.ID WHERE rendelesek.felhasznalonev = '$felhasznalonev'";
+        
         
         $eredmeny = mysqli_query($conn,$sql);
         mysqli_close($conn);
         return $eredmeny;
+    }
+
+    function ertekelest_beszur($felhasznalonev,$termek_id,$tartalom,$csillagok){
+        if (!($conn = adatbazis_csatlakozas())) {
+            return false;
+        }
+
+        $stmt = mysqli_prepare( $conn,"INSERT INTO ERTEKELESEK(felhasznalonev,termek_id,szoveg,csillag) VALUES (?,?,?,?)");
+
+        mysqli_stmt_bind_param($stmt, "sisi", $felhasznalonev,$termek_id,$tartalom,$csillagok);
+
+        $sikeres = mysqli_stmt_execute($stmt);
+
+        return $sikeres;
     }
 
 

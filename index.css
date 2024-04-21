@@ -2,11 +2,7 @@ body {
   background-color: #ffffff;
   margin: 0;
   padding: 0;
-  display: flex;
-  align-items: center;
   height: 100vh;
-
-  justify-content: center;
 }
 
 p,
@@ -24,6 +20,7 @@ h2 {
 }
 
 main {
+  margin-top: 5rem;
   position: relative;
   width: 100%;
   display: flex;
@@ -357,8 +354,8 @@ header {
   gap: 2rem;
   padding: 2rem 5rem;
   width: 40%;
-  margin-top: 68px;
-  height: 84vh;
+  margin-top: 5rem;
+  height: 100%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -448,8 +445,8 @@ header {
 
 .adatok-menu-span {
   position: absolute;
-  right: 32rem;
-  top: 5rem;
+  right: 2rem;
+  top: 2rem;
 }
 
 .link-btn {
@@ -480,7 +477,6 @@ header {
   justify-content: space-between;
   padding-bottom: 1rem;
   margin-top: 2rem;
-  border-bottom: 1px solid gray;
 
   align-items: center;
 
@@ -589,6 +585,14 @@ header {
   align-items: center;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
+.h-full {
+  height: 100%;
+}
+
 .kedvencek-img {
   width: 1.25rem;
 }
@@ -621,6 +625,10 @@ header {
   margin-top: 1rem;
 }
 
+.mt-3 {
+  margin-top: 3rem;
+}
+
 .ml-1 {
   margin-left: 1rem;
 }
@@ -651,6 +659,10 @@ header {
 
 .p-3 {
   padding: 3rem;
+}
+
+.px-3 {
+  padding: 0 3rem;
 }
 
 .right-1 {
@@ -722,10 +734,6 @@ header {
   object-fit: cover;
 }
 
-.velemeny-container {
-  width: 100%;
-}
-
 .velemenyek-container {
   width: 50%;
 }
@@ -795,7 +803,7 @@ header {
 
 .gyuruk-container {
   display: flex;
-  width: 100%;
+  padding: 0 2rem;
   gap: 3rem;
 }
 

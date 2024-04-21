@@ -8,6 +8,10 @@ $aktualisFelhasznalonev = $aktualisFelhasznalo['felhasznalonev'];
 
 $uzenetek = uzeneteket_leker($aktualisFelhasznalo['admin'],$aktualisFelhasznalonev);
 
+if (!isset($_SESSION["felhasznalonev"])) {
+  header("Location: ./hitelesites.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -31,8 +35,8 @@ $uzenetek = uzeneteket_leker($aktualisFelhasznalo['admin'],$aktualisFelhasznalon
             <div class="row items-center">
            
               <div class="velemeny-img-container">
-                <img class="profil-img mr-1" src="./felhasznalo_kepek/'.$egysor['profilkep'].'" alt="Profilkép" />
-              </div>
+              <img class="profil-img mr-1 mb-1" src="./felhasznalo_kepek/'.((isset($egysor["profilkep"]) && $egysor["profilkep"] !== '') ? $egysor["profilkep"] : "default.jpg").'"/>'.
+              '</div>
              
               <div class="col">
                   <span class="bold large">'.$egysor['nev'].'</span>
@@ -40,13 +44,14 @@ $uzenetek = uzeneteket_leker($aktualisFelhasznalo['admin'],$aktualisFelhasznalon
               </div>
               <span class="ml-1">'.$egysor['idopont'].'</span> 
             </div>
-            <p class="ml-1">'.
+            <p class="ml-1 mb-3">'.
              $egysor['tartalom']
             .'</p>
           <input type="hidden" name="felhasznalonev" id="felhasznalonev" value="'.$aktualisFelhasznalonev.'">
           <input type="hidden" name="szulo_id" id="szulo_id" value="'.$egysor['id'].'">';
           
-           echo '
+           if ($aktualisFelhasznalo['admin']) {
+            echo '
            <textarea 
            required
            class="w-full"
@@ -54,8 +59,10 @@ $uzenetek = uzeneteket_leker($aktualisFelhasznalo['admin'],$aktualisFelhasznalon
            id="szoveg"
            rows="5"
            placeholder="Válasz..."></textarea>
-           <button type="submit" class="btn mb-1">Válasz</button>
-           <a class="btn" href="./uzenetek.php?id='.$egysor['id'].'">Válaszok</a>
+           <button type="submit" class="btn mb-1">Válasz</button>';
+           }
+           
+           echo '<a class="btn" href="./uzenetek.php?id='.$egysor['id'].'">Válaszok</a>
           </form>'; };
           
           }

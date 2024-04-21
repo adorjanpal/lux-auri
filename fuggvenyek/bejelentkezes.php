@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
            
             $_SESSION['felhasznalonev'] = $felhasznalonev;
             
-            header("Location: ../index.html");
+            header("Location: ../index.php");
             exit();
         } else {
             echo "Hibás jelszó!";

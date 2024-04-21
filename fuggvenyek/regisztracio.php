@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $hash = password_hash($jelszo, PASSWORD_DEFAULT);
                 $sql = "INSERT INTO felhasznalok (email, felhasznalonev, nev, jelszo, admin) VALUES ('$email', '$felhasznalonev', '$nev', '$hash','0')";
                 if (mysqli_query($conn, $sql)) {
+                $_SESSION['felhasznalonev'] = $felhasznalonev;
                  header('Location: ../index.php');
                 } else {
                     echo "Hiba történt a regisztráció során: " . mysqli_error($conn);

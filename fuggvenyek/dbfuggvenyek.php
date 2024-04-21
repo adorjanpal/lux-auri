@@ -1,7 +1,7 @@
 <?php
    function adatbazis_csatlakozas() {
     
-    $conn = new mysqli("localhost", "root", "","luxauri_db");
+    $conn = new mysqli("localhost", "root", "","luxauri_db_2");
     
     if (mysqli_connect_errno()) {
         

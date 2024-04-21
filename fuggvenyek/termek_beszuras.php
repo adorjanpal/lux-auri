@@ -16,7 +16,7 @@
               
       termeket_beszur($nev, $meret, $mennyiseg, $leiras, $ar, $tipus, $file);
       
-      header("Location: ../index.html");
+      header("Location: ../index.php");
       
 
   

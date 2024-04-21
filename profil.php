@@ -24,21 +24,21 @@
   <?php include("./layout/header.php") ?>
     <main class="profil-main">
       <div class="profil-container relative">
-        <div class="adatok-menu-span">
-          <button id="profil-switch" class="link-btn active pointer">
-            Profil adatok
-          </button>
-          <span class="active">|</span>
-          <button id="korabbi-switch" class="link-btn pointer">
-            Korábbi rendelések
-          </button>
-        </div>
+        
         <!-- Profil fejléc -->
         <div class="profile-header">
-
+        <div class="adatok-menu-span row gap-1 items-center normal">
+          <span id="profil-switch" class="link-btn active pointer">
+            Profil adatok
+          </span>
+          <span class="active">|</span>
+          <span id="korabbi-switch" class="link-btn pointer">
+            Korábbi rendelések
+          </span>
+        </div>
           <?php echo '<img class="profil-img mr-1 mb-1" src="./felhasznalo_kepek/'.((isset($aktualisFelhasznalo["profilkep"]) && $aktualisFelhasznalo["profilkep"] !== '') ? $aktualisFelhasznalo["profilkep"] : "default.jpg").'"/>' ?>
-          <div>
-            <span><?php echo $aktualisFelhasznalo['nev'] ?></span>
+          <div class="col">
+            <span class="large bold"><?php echo $aktualisFelhasznalo['nev'] ?></span>
             <span><?php echo $aktualisFelhasznalo['felhasznalonev'] ?></span>
           </div>
           <form action="./fuggvenyek/kijelentkezes.php" method="post">
@@ -72,12 +72,7 @@
           
         </div>';
               
-            }
-
-            
-            
-            
-          ?>
+            }?>
         </div>
        
         <!-- Felhasználó adatai -->
@@ -160,12 +155,13 @@
                 name="profilkep"
               />
             </div>
-            <button class="btn">Adatok módosítása</button>
-            <form method="POST" action="./fuggvenyek/felhasznalo_torles.php">
-              <input type="hidden" name="felhasznalonev" value="<?php echo $aktualisFelhasznalo["felhasznalonev"] ?>">
-              <button class="btn eltavolitas-btn">Fiók törlése</button>
-            </form>
+            <button class="btn w-full">Adatok módosítása</button>
+            
           </form>
+          <form method="POST" action="./fuggvenyek/felhasznalo_torles.php">
+              <input type="hidden" name="felhasznalonev" value="<?php echo $aktualisFelhasznalo['felhasznalonev'] ?>">
+              <button type="submit" class="btn eltavolitas-btn">Fiók törlése</button>
+            </form>
         </div>
       </div>
     </main>

@@ -21,14 +21,14 @@
   <body class="relative" >
  
     <?php include("./layout/header.php") ?>
-    <main class="relative p-3">
+    <main class="relative ">
     <div class="hidden modal-container" id="termekek-hozzaadasa-modal">
           <img src="assets/x-lg.svg" class="x-btn pointer" id="close" alt="Close modal">
           <?php include 'termekek_hozzaadasa.php'; ?>
     </div>
       <div class="gyuruk-heading">
         <div class="row gap-1">
-          <h2>Nyakláncok</h2>
+          <h2>Karkötők</h2>
           <?php
             if ($aktualisFelhasznalo['admin']) {
               echo '<button class="btn hozzaadas" id="termek-hozzaadas">
@@ -45,6 +45,7 @@
           elengedhetetlen része! Böngésszen most és találja meg tökéletes
           nyakláncát!
         </p>
+        </div>
         <div class="grey-line"></div>
        
         
@@ -92,7 +93,7 @@
         </div>
 
        
-      </div>
+      
      
     </main>
     <?php include('./layout/footer.php') ?>

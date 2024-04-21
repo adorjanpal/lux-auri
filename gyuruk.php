@@ -28,7 +28,7 @@
     </div>
       <div class="gyuruk-heading">
         <div class="row gap-1">
-          <h2>Nyakláncok</h2>
+          <h2>Gyűrűk</h2>
           <?php
             if ($aktualisFelhasznalo['admin']) {
               echo '<button class="btn hozzaadas" id="termek-hozzaadas">
